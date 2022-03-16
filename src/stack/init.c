@@ -6,9 +6,11 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 00:28:05 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/16 00:33:40 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/03/16 02:00:57 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "stack.h"
 
 t_stack		*initialize(unsigned int size)
 {
@@ -17,9 +19,10 @@ t_stack		*initialize(unsigned int size)
 	stack = malloc(sizeof(stack));
 	if (!stack)
 		return (NULL);
-	stack->array = malloc(sizeof(stack->array) * (size + 1));
+	stack->array = malloc(sizeof(int) * (size + 1));
 	if (!stack->array)
 		return (NULL);
 	stack->size = size;
 	stack->top = -1;
+	return (stack);
 }

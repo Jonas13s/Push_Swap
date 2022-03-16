@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 12:38:11 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/11 14:49:21 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:20:05 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <stdlib.h>
 # define BUFF_SIZE 32
 # define MAX_FD 8192
+# define DIGITS		"0123456789"
+# define HEXALOW	"0123456789abcdef"
+# define HEXAUPP	"0123456789ABCDEF"
+# define OCTAL		"01234567"
 
 typedef struct s_list
 {
@@ -94,6 +98,8 @@ int		get_next_line(const int fd, char **line);
 void	ft_free2d(void **str);
 int		ft_printf(const char *format, ...);
 int		ft_str_valid(char *str, char *symbols);
+int		num_count(long long int i);
+char	*hex_conv(unsigned long long i, char *base);
 /*	BONUS	*/
 t_list	*ft_lstnew(void const *content, size_t content_size);
 void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t));

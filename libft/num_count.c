@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   num_count.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 15:30:04 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/15 15:48:42 by joivanau         ###   ########.fr       */
+/*   Created: 2022/03/16 01:14:16 by joivanau          #+#    #+#             */
+/*   Updated: 2022/03/16 01:21:54 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "libft.h"
 
-void	push_stack(t_stack *a, t_stack *b, int option)
+int	num_count(long long int i)
 {
-	if (option == 'a')
+	int		count;
+	char	*s;
+
+	count = 0;
+	if (i < 0)
 	{
-		if (b->top <= 0)
-			return ;
-		a->top++;
-		a->array[a->top] = b->array[b->top];
-		b->top--;
+		i *= -1;
+		count++;
 	}
-	if (option == 'b')
-	{
-		if (a->top <= 0)
-			return ;
-		b->top++;
-		b->array[b->top] = a->array[a->top];
-		a->top--;
-	}
-	else
-		return ;
+	s = hex_conv(i, DIGITS);
+	count += ft_strlen(s);
+	ft_strdel(&s);
+	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:57:59 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/15 15:51:19 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/03/16 00:42:19 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void		swap(t_stack *s);
 t_stack		*initialize(unsigned int size);
 void		reverse_rotate(t_stack *s);
 void		rotate(t_stack *s);
-void		push_stack(t_stack *a, t_stack *b, int option);
+void		push_stack(t_stack *from, t_stack *to);
 
 #endif

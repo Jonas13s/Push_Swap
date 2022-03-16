@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:06:25 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/09 00:05:40 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:21:27 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 # include "libft.h"
 # include <stdarg.h>
 # include <inttypes.h>
-
-# define DIGITS		"0123456789"
-# define HEXALOW	"0123456789abcdef"
-# define HEXAUPP	"0123456789ABCDEF"
-# define OCTAL		"01234567"
 
 typedef struct s_print
 {
