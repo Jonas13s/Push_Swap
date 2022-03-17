@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 00:26:28 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/16 00:26:36 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/03/17 02:07:13 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ void	rotate(t_stack *s)
 	s->array[0] = temp;
 }
 
+void	rotate_both(t_stack *a, t_stack *b)
+{
+	rotate(a);
+	rotate(b);
+}
+
 void	reverse_rotate(t_stack *s)
 {
 	int	i;
@@ -46,4 +52,10 @@ void	reverse_rotate(t_stack *s)
 	while (++i < s->top)
 		s->array[i] = s->array[i + 1];
 	s->array[s->top] = temp;
+}
+
+void	reverse_rotate_both(t_stack *a, t_stack *b)
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
 }

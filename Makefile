@@ -2,7 +2,7 @@ STACK = init.c push.c rotate.c swap.c
 
 STACK_DIR = src/stack/
 
-CHECKER = checker.c
+CHECKER = checker.c read_line.c free_checker.c
 
 CHECKER_DIR = src/checker/
 

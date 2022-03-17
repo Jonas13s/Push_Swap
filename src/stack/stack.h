@@ -6,14 +6,14 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:57:59 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/16 00:42:19 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/03/17 02:07:42 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
 
-#include <stdlib.h>
+# include <stdlib.h>
 
 typedef struct s_stack
 {
@@ -27,5 +27,7 @@ t_stack		*initialize(unsigned int size);
 void		reverse_rotate(t_stack *s);
 void		rotate(t_stack *s);
 void		push_stack(t_stack *from, t_stack *to);
-
+void		swap_both(t_stack *a, t_stack *b);
+void		rotate_both(t_stack *a, t_stack *b);
+void		reverse_rotate_both(t_stack *a, t_stack *b);
 #endif
