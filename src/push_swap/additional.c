@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   additional.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/17 01:23:41 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/18 02:15:46 by joivanau         ###   ########.fr       */
+/*   Created: 2022/03/18 02:12:19 by joivanau          #+#    #+#             */
+/*   Updated: 2022/03/18 02:13:15 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 static int	dup_check(char **str)
 {
@@ -52,7 +52,7 @@ static int	check_size(char *str)
 	return (1);
 }
 
-static int	check_number(char **str, int args)
+int	check_number(char **str, int args)
 {
 	int		i;
 	int		j;
@@ -79,7 +79,7 @@ static int	check_number(char **str, int args)
 	return (0);
 }
 
-static void	fill_stack(int args, char **argv, t_stack *stack)
+void	fill_stack(int args, char **argv, t_stack *stack)
 {
 	int	i;
 
@@ -94,19 +94,18 @@ static void	fill_stack(int args, char **argv, t_stack *stack)
 	}
 }
 
-int	main(int args, char **argv)
+int	free_stack_error(t_stack *a, t_stack *b, char *str)
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	a = initialize(args - 1);
-	b = initialize(args - 1);
-	if (check_number(argv, args))
-		return (free_stack_error(a, b, NULL));
-	fill_stack(args, argv, a);
-	if (read_line(a, b))
-		return (1);
-	free_stack(a, NULL);
-	free_stack(b, NULL);
-	return (0);
+	if (a->array)
+		ft_memdel((void *)&a->array);
+	if (a)
+		ft_memdel((void *)&a);
+	if (b->array)
+		ft_memdel((void *)&b->array);
+	if (b)
+		ft_memdel((void *)&b);
+	if (str)
+		ft_strdel(&str);
+	ft_putstr_fd("Error\n", 2);
+	return (1);
 }
