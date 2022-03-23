@@ -45,6 +45,6 @@ clean:
 	@rm -rf $(OBJ_DIR)
 	@make -s -C libft/ clean
 fclean: clean
-	@rm -rf $(CHECKER)
+	@rm -rf $(CHECKER) $(PUSH_SWAP)
 	@make -s -C libft/ fclean
 re: fclean all
