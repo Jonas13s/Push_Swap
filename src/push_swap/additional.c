@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 02:12:19 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/18 02:13:15 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/03/29 13:27:46 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,18 @@ int	free_stack_error(t_stack *a, t_stack *b, char *str)
 	if (str)
 		ft_strdel(&str);
 	ft_putstr_fd("Error\n", 2);
+	return (1);
+}
+
+int	free_stack(t_stack *a, t_stack *b)
+{
+	if (a->array)
+		ft_memdel((void *)&a->array);
+	if (a)
+		ft_memdel((void *)&a);
+	if (b->array)
+		ft_memdel((void *)&b->array);
+	if (b)
+		ft_memdel((void *)&b);
 	return (1);
 }
