@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 23:27:49 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/28 02:39:06 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/03/29 15:44:19 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ int	get_top(t_stack *s, int num)
 			break ;
 	if (s->array[i] != num)
 		return (-1);
-	best_move(s, 'a');
+	best_move(s, 'a', num);
 	return (0);
 }
