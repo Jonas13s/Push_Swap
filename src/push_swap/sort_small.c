@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 13:25:52 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/29 15:54:46 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/04/01 04:29:51 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,16 @@ int	solve_small(t_stack *a, t_stack *b)
 		check_small(a);
 	if (a->top == 3)
 	{
-		get_top(a, find_smallest(a));
+		get_top(a, find_smallest(a), 'a');
 		run(a, b, PB);
 		check_small(a);
 		run(a, b, PA);
 	}
 	if (a->top == 4)
 	{
-		get_top(a, find_smallest(a));
+		get_top(a, find_smallest(a), 'a');
 		run(a, b, PB);
-		get_top(a, find_smallest(a));
+		get_top(a, find_smallest(a), 'a');
 		run(a, b, PB);
 		check_small(a);
 		run(a, b, PA);

@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:00:02 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/29 16:51:00 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/04/01 20:37:10 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ int	main(int args, char **argv)
 		return (free_stack_error(a, b, NULL));
 	fill_stack(args, argv, a);
 	solve(a, b, (args - 1));
-	//print_array(a);
+	print_array(a);
 	free_stack(a, b);
 }
