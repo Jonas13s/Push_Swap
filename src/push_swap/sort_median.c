@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   median.c                                           :+:      :+:    :+:   */
+/*   sort_median.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 01:54:42 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/01 01:54:58 by joivanau         ###   ########.fr       */
+/*   Created: 2022/04/04 18:59:14 by joivanau          #+#    #+#             */
+/*   Updated: 2022/04/04 18:59:51 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	push_below(t_stack *a, t_stack *b, int med)
 {
@@ -68,6 +70,28 @@ void	push_above(t_stack *a, t_stack *b, int med)
 	}
 }
 
+int	best_pos(t_stack *s, int small, int big)
+{
+	int	t[2];
+	int	b[2];
+
+	t[0] = best_move_top(s, small);
+	t[1] = best_move_top(s, big);
+	b[0] = best_move_bottom(s, small) + 1;
+	b[1] = best_move_bottom(s, big) + 1;
+
+	if ((t[0] <= t[1] && t[0] <= b[1]) || (b[0] <= b[1] && b[0] <= t[1]))
+	{
+		best_move(s, 'b', small);
+		return (1);
+	}
+	else
+	{
+		best_move(s, 'b', big);
+		return (2);
+	}
+	return (0);
+}
 
 void	push_back(t_stack *a, t_stack *b)
 {
@@ -89,4 +113,16 @@ void	push_back(t_stack *a, t_stack *b)
 		run(a, b, RA);
 		count--;
 	}
+}
+
+int	solve_median(t_stack *a, t_stack *b)
+{
+	int	med;
+
+	med = median(a);
+	push_below(a, b, med);
+	push_back(a, b);
+	push_above(a, b, med);
+	push_back(a, b);
+	return (0);
 }

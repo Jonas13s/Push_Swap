@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:00:02 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/01 20:37:10 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/04/05 17:59:33 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int	solve(t_stack *a, t_stack *b, int count)
 {
 	if (count <= 5)
 		solve_small(a, b);
+	//else if (count <= 100)
+		//solve_median(a, b);
 	else
 		solve_large(a, b);
 	(void)b;

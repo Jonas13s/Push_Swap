@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 13:32:16 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/25 13:38:13 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/04/05 16:50:09 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,13 @@ void	run(t_stack *a, t_stack *b, char *str)
 	else if (ft_strequ(RRR, str))
 		reverse_rotate_both(a, b);
 	ft_printf("%s\n", str);
+}
+
+void	run_times(t_stack *a, t_stack *b, char *str, int times)
+{
+	while (times > 0)
+	{
+		run(a, b, str);
+		times--;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 17:03:48 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/30 01:39:03 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/04/05 14:55:55 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,10 @@ int	best_move_bottom(t_stack *s, int num)
 	return (-1);
 }
 
-int	number_exist(t_stack *s, int num)
-{
-	int	i;
-
-	i = 0;
-	while (i <= s->top)
-	{
-		if (s->array[i] == num)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 int	best_move(t_stack *s, char c, int small)
 {
 	int	moves[2];
 
-	if (number_exist(s, small))
-		return (-1);
 	moves[0] = best_move_bottom(s, small);
 	moves[1] = best_move_top(s, small);
 	if (moves[1] == 0)

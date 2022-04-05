@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 23:27:49 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/01 04:28:14 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/03/29 15:44:19 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	find_biggest(t_stack *s)
 	return (number);
 }
 
-int	get_top(t_stack *s, int num, char c)
+int	get_top(t_stack *s, int num)
 {
 	int	i;
 
@@ -80,6 +80,6 @@ int	get_top(t_stack *s, int num, char c)
 			break ;
 	if (s->array[i] != num)
 		return (-1);
-	best_move(s, c, num);
+	best_move(s, 'a', num);
 	return (0);
 }
