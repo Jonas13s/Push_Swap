@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:04:36 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/06 03:33:24 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:34:36 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	move_chunk(t_stack *a, t_stack *b, int min, int max);
 void	get_top_a(t_stack *a, int num);
 /* best_move.c*/
 int		best_move_bottom(t_stack *s, int num);
-int		best_move(t_stack *s, char c, int small);
+int		best_move_b(t_stack *s, int small);
+int		best_move_a(t_stack *s, int small);
 int		best_move_top(t_stack *s, int num);
 /*additional_check.c */
 int		find_biggest(t_stack *s);
