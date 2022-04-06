@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:04:36 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/06 03:22:16 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/04/06 03:33:24 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	run(t_stack *a, t_stack *b, char *str);
 void	run_times(t_stack *a, t_stack *b, char *str, int times);
 /*solve_small.c*/
 int		solve_small(t_stack *a, t_stack *b);
+int		check_small(t_stack *a);
 /*solve_large.c*/
 int		solve_median(t_stack *a, t_stack *b);
 int		solve_large(t_stack *a, t_stack *b);

@@ -6,13 +6,13 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 13:25:52 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/29 15:54:46 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/04/06 03:33:13 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	check_small(t_stack *a)
+int	check_small(t_stack *a)
 {
 	int	*arr;
 

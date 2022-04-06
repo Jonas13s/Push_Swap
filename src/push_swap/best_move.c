@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 17:03:48 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/06 02:47:23 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/04/06 03:31:24 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ int	best_move_top(t_stack *s, int num)
 {
 	int	i;
 
-	i = -1;
-	while (++i <= s->top)
+	i = s->top;
+	while (i >= 0)
 	{
-		if (s->array[s->top - i] == num)
-			return (i);
+		if (s->array[i] == num)
+			return (s->top - i);
+		i--;
 	}
 	return (-1);
 }
@@ -29,11 +30,12 @@ int	best_move_bottom(t_stack *s, int num)
 {
 	int	i;
 
-	i = -1;
-	while (++i <= s->top)
+	i = 0;
+	while (i <= s->top)
 	{
 		if (s->array[i] == num)
 			return (i);
+		i++;
 	}
 	return (-1);
 }
@@ -42,8 +44,12 @@ int	best_move(t_stack *s, char c, int small)
 {
 	int	moves[2];
 
+	moves[0] = -1;
+	moves[1] = -1;
 	moves[0] = best_move_bottom(s, small);
 	moves[1] = best_move_top(s, small);
+	if (moves[1] == -1 && moves[0] == -1)
+		return (0);
 	if (moves[1] == 0)
 		return (1);
 	if (c == 'a')
