@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:59:14 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/04 18:59:51 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/04/06 03:15:37 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	push_below(t_stack *a, t_stack *b, int med)
 	int	k;
 
 	k = a->top / 2;
-	while(k != a->top)
+	while (k != a->top)
 	{
 		o = a->top + 1;
 		i = -1;
-		while(++i <= a->top)
+		while (++i <= a->top)
 		{
 			if (a->array[i] <= med)
 				break ;
@@ -48,11 +48,11 @@ void	push_above(t_stack *a, t_stack *b, int med)
 	int	k;
 
 	k = a->top / 2;
-	while(k != a->top)
+	while (k != a->top)
 	{
 		o = a->top + 1;
 		i = -1;
-		while(++i <= a->top)
+		while (++i <= a->top)
 		{
 			if (a->array[i] > med)
 				break ;
@@ -79,7 +79,6 @@ int	best_pos(t_stack *s, int small, int big)
 	t[1] = best_move_top(s, big);
 	b[0] = best_move_bottom(s, small) + 1;
 	b[1] = best_move_bottom(s, big) + 1;
-
 	if ((t[0] <= t[1] && t[0] <= b[1]) || (b[0] <= b[1] && b[0] <= t[1]))
 	{
 		best_move(s, 'b', small);
@@ -108,7 +107,7 @@ void	push_back(t_stack *a, t_stack *b)
 		else
 			count++;
 	}
-	while(count != 0)
+	while (count != 0)
 	{
 		run(a, b, RA);
 		count--;

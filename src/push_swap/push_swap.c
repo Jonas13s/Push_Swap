@@ -6,23 +6,11 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:00:02 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/05 17:59:33 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/04/06 03:21:51 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_array(t_stack *a)
-{
-	int	i;
-
-	i = 0;
-	while (i <= a->top)
-	{
-		ft_printf("%d\n", a->array[a->top - i]);
-		i++;
-	}
-}
 
 void	swap_int(int *a, int *b)
 {
@@ -78,13 +66,10 @@ int	solve(t_stack *a, t_stack *b, int count)
 {
 	if (count <= 5)
 		solve_small(a, b);
-	//else if (count <= 100)
-		//solve_median(a, b);
+	else if (count <= 100)
+		solve_median(a, b);
 	else
 		solve_large(a, b);
-	(void)b;
-	(void)count;
-	(void)a;
 	return (0);
 }
 
@@ -101,6 +86,5 @@ int	main(int args, char **argv)
 		return (free_stack_error(a, b, NULL));
 	fill_stack(args, argv, a);
 	solve(a, b, (args - 1));
-	print_array(a);
 	free_stack(a, b);
 }

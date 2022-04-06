@@ -6,78 +6,11 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 02:12:19 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/29 13:27:46 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/04/06 03:21:17 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	dup_check(char **str)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (str[++i])
-	{
-		j = -1;
-		while (str[++j])
-		{
-			if (i == j)
-				continue ;
-			if (ft_strcmp(str[i], str[j]) == 0)
-				return (1);
-		}
-	}
-	return (0);
-}
-
-static int	check_size(char *str)
-{
-	int	i;
-	int	size;
-
-	i = -1;
-	size = 0;
-	while (str[++i])
-	{
-		if (str[i] == '-' && i == 0)
-			continue ;
-		size += str[i];
-	}
-	if (str[0] == '-' && size <= 527)
-		return (0);
-	if (size <= 526)
-		return (0);
-	return (1);
-}
-
-int	check_number(char **str, int args)
-{
-	int		i;
-	int		j;
-
-	if (args <= 1)
-		return (1);
-	i = 0;
-	while (str[++i])
-	{
-		j = 0;
-		while (str[i][j])
-		{
-			if (str[i][j] == '-' && j == 0)
-				j++;
-			if (!ft_isdigit(str[i][j]))
-				return (1);
-			j++;
-		}
-		if (check_size(str[i]))
-			return (1);
-	}
-	if (dup_check(str))
-		return (1);
-	return (0);
-}
 
 void	fill_stack(int args, char **argv, t_stack *stack)
 {
@@ -121,4 +54,30 @@ int	free_stack(t_stack *a, t_stack *b)
 	if (b)
 		ft_memdel((void *)&b);
 	return (1);
+}
+
+size_t	chunk_counter(t_stack *a)
+{
+	size_t	count;
+
+	count = (a->top + 1) / S_NUM + 1;
+	return (count);
+}
+
+int	closest(t_stack *a, int num)
+{
+	int	k;
+	int	i;
+
+	if (a->top < 0 || num > find_biggest(a))
+		return (num);
+	i = 0;
+	k = find_biggest(a);
+	while (i <= a->top)
+	{
+		if (a->array[i] > num && a->array[i] < k)
+			k = a->array[i];
+		i++;
+	}
+	return (k);
 }
