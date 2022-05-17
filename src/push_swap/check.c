@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 02:30:59 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/06 02:31:11 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:54:44 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,18 @@ int	check_number(char **str, int args)
 	if (dup_check(str))
 		return (1);
 	return (0);
+}
+
+int	check_order(t_stack *a)
+{
+	int	i;
+
+	i = a->top;
+	while (i >= 1)
+	{
+		if (a->array[i] > a->array[i - 1])
+			return (0);
+		i--;
+	}
+	return (1);
 }

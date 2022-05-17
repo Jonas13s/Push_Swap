@@ -6,97 +6,81 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 15:14:17 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/06 03:35:31 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/05/17 12:45:13 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_max(int *arr, size_t chunk, size_t c)
+void	push_group_back(t_stack *a, t_stack *b, int *group)
 {
-	int	max;
+	int	index[2];
+	int	number[2];
+	int	biggest;
+	int	smallest;
+
+	while (has_group(b, group))
+	{
+		smallest = find_smallest(a);
+		biggest = find_biggest(a);
+		index[0] = least_moves_number(a, b, group);
+		number[0] = b->array[index[0]];
+		index[1] = a->top;
+		while (number[0] > smallest && number[0] < biggest && index[1] > 0 && \
+		(number[0] < a->array[index[1]] || number[0] > a->array[index[1] - 1]))
+			index[1]--;
+		while ((number[0] < smallest || number[0] > biggest) && index[1] >= 0 \
+		&& a->array[index[1]] != biggest)
+			index[1]--;
+		number[1] = a->array[index[1]];
+		r_stack(a, b, number, index);
+		rr_stack(a, b, number, index);
+		run(a, b, PA);
+	}
+}
+
+void	rotate_smallest(t_stack *a)
+{
+	int	smallest;
 	int	i;
-	int	k;
 
-	i = 1;
-	k = 0;
-	while (chunk >= 1)
-	{
-		if (chunk == 1)
-			max = arr[k];
-		else
-			max = arr[k];
-		if (c == chunk)
-			return (max);
-		k = (i * S_NUM);
-		i++;
-		chunk--;
-	}
-	return (0);
-}
-
-int	get_min(int *arr, t_stack *a, size_t chunk, size_t c)
-{
-	int	min;
-	int	i;
-	int	k;
-
-	i = 1;
-	k = 0;
-	while (chunk >= 1)
-	{
-		if (chunk == 1)
-			min = arr[k + ((a->top + 1) % k) - 1];
-		else
-			min = arr[i * S_NUM - 1];
-		if (c == chunk)
-			return (min);
-		k = (i * S_NUM);
-		i++;
-		chunk--;
-	}
-	return (0);
-}
-
-void	pos(t_stack *a, t_stack *b)
-{
-	int	top_num;
-	int	move;
-
-	top_num = b->array[b->top];
-	move = closest(a, top_num);
-	if (move == top_num && a->top >= 0)
-		move = find_smallest(a);
-	get_top_a(a, move);
-	run(a, b, PA);
-}
-
-void	sort_chunk(t_stack *a, t_stack *b)
-{
-	while (b->top >= 0)
-	{
-		best_pos(b, find_smallest(b), find_biggest(b));
-		pos(a, b);
-	}
+	smallest = find_smallest(a);
+	i = a->top;
+	while (a->array[i] != smallest)
+		i--;
+	if (i > a->top / 2)
+		while (a->array[a->top] != smallest)
+			run(a, NULL, RA);
+	else
+		while (a->array[a->top] != smallest)
+			run(a, NULL, RRA);
 }
 
 int	solve_large(t_stack *a, t_stack *b)
 {
-	size_t	chunk;
-	int		*arr;
-	int		min;
-	int		max;
+	int	**groups;
+	int	num;
+	int	i;
 
-	arr = correct_order(a);
-	chunk = chunk_counter(a);
-	while (chunk >= 1)
+	if (a->top < 70)
+		num = 1;
+	else if (a->top < 100)
+		num = 2;
+	else
+		num = 4;
+	groups = int_groups(a, num);
+	i = 1;
+	while (i <= groups[0][0])
+		push_group(a, b, groups[i++]);
+	i = groups[0][0];
+	while (i > 0)
 	{
-		min = get_min(arr, a, chunk_counter(a), chunk);
-		max = get_max(arr, chunk_counter(a), chunk);
-		move_chunk(a, b, min, max);
-		sort_chunk(a, b);
-		chunk--;
+		push_group_back(a, b, groups[i]);
+		free(groups[i]);
+		i--;
 	}
-	get_top_a(a, find_smallest(a));
+	free(groups[0]);
+	free(groups);
+	rotate_smallest(a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 02:12:19 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/06 03:21:17 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:24:53 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,28 +56,34 @@ int	free_stack(t_stack *a, t_stack *b)
 	return (1);
 }
 
-size_t	chunk_counter(t_stack *a)
+int	find_biggest(t_stack *s)
 {
-	size_t	count;
-
-	count = (a->top + 1) / S_NUM + 1;
-	return (count);
-}
-
-int	closest(t_stack *a, int num)
-{
-	int	k;
+	int	biggest;
 	int	i;
 
-	if (a->top < 0 || num > find_biggest(a))
-		return (num);
-	i = 0;
-	k = find_biggest(a);
-	while (i <= a->top)
+	i = s->top;
+	biggest = s->array[s->top];
+	while (i >= 0)
 	{
-		if (a->array[i] > num && a->array[i] < k)
-			k = a->array[i];
-		i++;
+		if (s->array[i] > biggest)
+			biggest = s->array[i];
+		i--;
 	}
-	return (k);
+	return (biggest);
+}
+
+int	find_smallest(t_stack *s)
+{
+	int	smallest;
+	int	i;
+
+	i = s->top;
+	smallest = s->array[s->top];
+	while (i >= 0)
+	{
+		if (s->array[i] < smallest)
+			smallest = s->array[i];
+		i--;
+	}
+	return (smallest);
 }

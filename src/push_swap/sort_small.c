@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 13:25:52 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/06 03:33:13 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:51:33 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,21 @@ int	check_small(t_stack *a)
 	if (arr[2] < arr[1] && arr[1] > arr[0])
 		run(a, NULL, "rra");
 	return (1);
+}
+
+void	get_top(t_stack *a, int number)
+{
+	int	i;
+
+	i = a->top;
+	while (a->array[i] != number)
+		i--;
+	if (i > a->top / 2)
+		while (a->array[a->top] != number)
+			run(a, NULL, RA);
+	else
+		while (a->array[a->top] != number)
+			run(a, NULL, RRA);
 }
 
 int	solve_small(t_stack *a, t_stack *b)

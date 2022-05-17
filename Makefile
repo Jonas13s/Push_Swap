@@ -12,9 +12,9 @@ CHECKER_OBJ = $(STACK:.c=.o) $(CHECKER_SRC:.c=.o)
 
 PUSH_SWAP = push_swap
 
-PUSH_SWAP_SRC = push_swap.c additional.c additional_check.c run.c 
-PUSH_SWAP_SRC += sort_small.c best_move.c sort_large.c sort_median.c
-PUSH_SWAP_SRC += check.c move_chunk.c
+PUSH_SWAP_SRC = push_swap.c additional.c run.c groups.c
+PUSH_SWAP_SRC += sort_large.c moves.c sort_small.c
+PUSH_SWAP_SRC += check.c
 
 PUSH_SWAP_DIR = src/push_swap/
 

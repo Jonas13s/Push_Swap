@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:04:36 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/06 15:34:36 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:54:38 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,15 @@
 
 # include "stack.h"
 # include "libft.h"
-# include <stdio.h>
 
 # define S_NUM 75
 
+/*check.c*/
+int		check_number(char **str, int args);
 int		free_stack_error(t_stack *a, t_stack *b, char *str);
 int		free_stack(t_stack *a, t_stack *b);
 void	fill_stack(int args, char **argv, t_stack *stack);
-int		check_number(char **str, int args);
-int		check_order(char **argv);
-int		*correct_order(t_stack *a);
-int		median(t_stack *a);
-/* move_chunk.c*/
-void	move_chunk(t_stack *a, t_stack *b, int min, int max);
-void	get_top_a(t_stack *a, int num);
-/* best_move.c*/
-int		best_move_bottom(t_stack *s, int num);
-int		best_move_b(t_stack *s, int small);
-int		best_move_a(t_stack *s, int small);
-int		best_move_top(t_stack *s, int num);
-/*additional_check.c */
-int		find_biggest(t_stack *s);
-int		find_smallest(t_stack *s);
-int		get_top(t_stack *s, int num);
-/*additional.c*/
-size_t	chunk_counter(t_stack *a);
-int		closest(t_stack *a, int num);
+int		check_order(t_stack *a);
 /* run.c */
 void	run(t_stack *a, t_stack *b, char *str);
 void	run_times(t_stack *a, t_stack *b, char *str, int times);
@@ -48,9 +31,18 @@ void	run_times(t_stack *a, t_stack *b, char *str, int times);
 int		solve_small(t_stack *a, t_stack *b);
 int		check_small(t_stack *a);
 /*solve_large.c*/
-int		solve_median(t_stack *a, t_stack *b);
 int		solve_large(t_stack *a, t_stack *b);
-/*solve_median.c*/
-int		best_pos(t_stack *s, int small, int big);
-void	push_back(t_stack *a, t_stack *b);
+/*additional.c*/
+int		find_smallest(t_stack *s);
+int		find_biggest(t_stack *s);
+/*groups.c*/
+int		**int_groups(t_stack *s, int num);
+void	push_group(t_stack *a, t_stack *b, int *group);
+int		has_group(t_stack *s, int *group);
+/*moves.c*/
+void	push_group_back(t_stack *a, t_stack *b, int *group);
+void	r_stack(t_stack *a, t_stack *b, int number[2], int index[2]);
+void	rr_stack(t_stack *a, t_stack *b, int number[2], int index[2]);
+int	least_moves_number(t_stack *a, t_stack *b, int *group);
+int	moves(t_stack *a, t_stack *b, int bond[2], int number);
 #endif
