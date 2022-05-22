@@ -6,7 +6,7 @@
 #    By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 14:55:31 by joivanau          #+#    #+#              #
-#    Updated: 2022/03/16 01:20:01 by joivanau         ###   ########.fr        #
+#    Updated: 2022/05/23 00:06:38 by joivanau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ ft_free2d.c ft_str_valid.c hex_conv.c num_count.c
 
 SRC = ft_printf.c ft_args.c ft_ischeck.c ft_conv.c ftoa.c assign_values.c
 SRC += print_float.c print_char.c print_string.c print_signedinteger.c
-SRC += print_hex.c print_pointer.c print_octal.c print_unsignedint.c
+SRC += print_hex.c print_pointer.c print_octal.c print_unsignedint.c color.c
 
 LIBRARY = $(FILES:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 12:38:11 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/16 01:20:05 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/05/22 23:58:22 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@
 # define HEXALOW	"0123456789abcdef"
 # define HEXAUPP	"0123456789ABCDEF"
 # define OCTAL		"01234567"
+# define RED		"\033[0;31m"
+# define BLACK		"\033[0;30m"
+# define GREEN		"\033[0;32m"
+# define YELLOW		"\033[0;33m"
+# define BLUE		"\033[0;34m"
+# define PURPLE		"\033[0;35m"
+# define CYAN		"\033[0;36m"
+# define WHITE		"\033[0;37m"
+# define EOC		"\033[0m"
 
 typedef struct s_list
 {

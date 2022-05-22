@@ -6,11 +6,19 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 13:32:16 by joivanau          #+#    #+#             */
-/*   Updated: 2022/04/06 03:24:37 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/05/23 02:16:27 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	run_print(t_stack *a, t_stack *b, char *str)
+{
+	if (a->debug == 1)
+		debugging(a, b, str);
+	else
+		ft_printf("%s\n", str);u
+}
 
 void	run(t_stack *a, t_stack *b, char *str)
 {
@@ -36,7 +44,7 @@ void	run(t_stack *a, t_stack *b, char *str)
 		reverse_rotate(b);
 	else if (ft_strequ(RRR, str))
 		reverse_rotate_both(a, b);
-	ft_printf("%s\n", str);
+	run_print(a, b, str);
 }
 
 void	run_times(t_stack *a, t_stack *b, char *str, int times)

@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:06:25 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/16 01:21:27 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/05/23 00:10:28 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,7 @@ int			add_lengthmod(const char *format, t_length *mod, t_print *tab);
 int			add_presicion(const char *format, t_print *tab);
 int			add_width(const char *format, t_print *tab);
 int			add_flags(const char *format, t_print *tab);
+/* color set */
+int			is_color(const char *format);
+int			change_color(const char *format);
 #endif

@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 15:14:17 by joivanau          #+#    #+#             */
-/*   Updated: 2022/05/17 12:45:13 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/05/23 01:30:54 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	push_group_back(t_stack *a, t_stack *b, int *group)
 	}
 }
 
-void	rotate_smallest(t_stack *a)
+static void	rotate_smallest(t_stack *a, t_stack *b)
 {
 	int	smallest;
 	int	i;
@@ -50,10 +50,10 @@ void	rotate_smallest(t_stack *a)
 		i--;
 	if (i > a->top / 2)
 		while (a->array[a->top] != smallest)
-			run(a, NULL, RA);
+			run(a, b, RA);
 	else
 		while (a->array[a->top] != smallest)
-			run(a, NULL, RRA);
+			run(a, b, RRA);
 }
 
 int	solve_large(t_stack *a, t_stack *b)
@@ -81,6 +81,6 @@ int	solve_large(t_stack *a, t_stack *b)
 	}
 	free(groups[0]);
 	free(groups);
-	rotate_smallest(a);
+	rotate_smallest(a, b);
 	return (0);
 }

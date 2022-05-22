@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:04:36 by joivanau          #+#    #+#             */
-/*   Updated: 2022/05/17 13:54:38 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/05/23 01:04:22 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 # define S_NUM 75
 
+/* main.c */
+int		debugging(t_stack *a, t_stack *b, char *str);
 /*check.c*/
 int		check_number(char **str, int args);
 int		free_stack_error(t_stack *a, t_stack *b, char *str);
@@ -29,7 +31,6 @@ void	run(t_stack *a, t_stack *b, char *str);
 void	run_times(t_stack *a, t_stack *b, char *str, int times);
 /*solve_small.c*/
 int		solve_small(t_stack *a, t_stack *b);
-int		check_small(t_stack *a);
 /*solve_large.c*/
 int		solve_large(t_stack *a, t_stack *b);
 /*additional.c*/
@@ -43,6 +44,6 @@ int		has_group(t_stack *s, int *group);
 void	push_group_back(t_stack *a, t_stack *b, int *group);
 void	r_stack(t_stack *a, t_stack *b, int number[2], int index[2]);
 void	rr_stack(t_stack *a, t_stack *b, int number[2], int index[2]);
-int	least_moves_number(t_stack *a, t_stack *b, int *group);
-int	moves(t_stack *a, t_stack *b, int bond[2], int number);
+int		least_moves_number(t_stack *a, t_stack *b, int *group);
+int		moves(t_stack *a, t_stack *b, int bond[2], int number);
 #endif

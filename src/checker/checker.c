@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 01:23:41 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/25 13:09:19 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/05/23 00:49:16 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ int	main(int args, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 
-	a = initialize(args - 1);
-	b = initialize(args - 1);
+	a = initialize(args - 1, 1);
+	b = initialize(args - 1, 1);
 	if (check_number(argv, args))
 		return (free_stack_error(a, b, NULL));
 	fill_stack(args, argv, a);
