@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 13:32:16 by joivanau          #+#    #+#             */
-/*   Updated: 2022/05/23 02:16:27 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:55:51 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	run_print(t_stack *a, t_stack *b, char *str)
 	if (a->debug == 1)
 		debugging(a, b, str);
 	else
-		ft_printf("%s\n", str);u
+		ft_printf("%s\n", str);
 }
 
 void	run(t_stack *a, t_stack *b, char *str)
