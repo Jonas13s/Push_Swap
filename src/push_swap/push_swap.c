@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:00:02 by joivanau          #+#    #+#             */
-/*   Updated: 2022/05/23 14:48:23 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:28:31 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	main(int args, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 
+	if (args == 1)
+		return (0);
 	if (ft_strcmp(argv[1], "-v") == 0)
 	{
 		args--;
@@ -75,4 +77,5 @@ int	main(int args, char **argv)
 		return (free_stack(a, b));
 	solve(a, b, (args - 1));
 	free_stack(a, b);
+	return (0);
 }
