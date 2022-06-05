@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
+/*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 13:32:16 by joivanau          #+#    #+#             */
-/*   Updated: 2022/05/23 14:55:51 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/05 20:08:52 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,30 @@ void	run_times(t_stack *a, t_stack *b, char *str, int times)
 		run(a, b, str);
 		times--;
 	}
+}
+
+int	free_stack_error_line(t_stack *a, t_stack *b, char **argv, int mode)
+{
+	int	i;
+
+	i = 0;
+	if (a->array)
+		ft_memdel((void *)&a->array);
+	if (a)
+		ft_memdel((void *)&a);
+	if (b->array)
+		ft_memdel((void *)&b->array);
+	if (b)
+		ft_memdel((void *)&b);
+	if (mode == 1)
+	{
+		while (argv[i])
+		{
+			ft_memdel((void *) &argv[i]);
+			i++;
+		}
+		ft_memdel((void **) &argv);
+	}
+	ft_putstr_fd("Error\n", 2);
+	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
+/*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 02:30:59 by joivanau          #+#    #+#             */
-/*   Updated: 2022/05/17 13:54:44 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/05 20:06:04 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,22 @@ static int	check_size(char *str)
 	return (1);
 }
 
-int	check_number(char **str, int args)
+int	check_number(char **str, int args, int mode)
 {
 	int		i;
 	int		j;
 
 	if (args <= 1)
 		return (1);
-	i = 0;
-	while (str[++i])
+	i = 1;
+	if (mode == 1)
+		i = 0;
+	while (str[i])
 	{
 		j = 0;
 		while (str[i][j])
 		{
-			if (str[i][j] == '-' && j == 0)
+			if (str[i][j] == '-' && j == 0 && str[i][j + 1] != '\0')
 				j++;
 			if (!ft_isdigit(str[i][j]))
 				return (1);
@@ -73,6 +75,7 @@ int	check_number(char **str, int args)
 		}
 		if (check_size(str[i]))
 			return (1);
+		i++;
 	}
 	if (dup_check(str))
 		return (1);

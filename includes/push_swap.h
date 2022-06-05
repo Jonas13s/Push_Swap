@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:04:36 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/05 18:53:15 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/05 20:24:11 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 /* main.c */
 int		debugging(t_stack *a, t_stack *b, char *str);
 /*check.c*/
-int		check_number(char **str, int args);
+int	check_number(char **str, int args, int mode);
 int		free_stack_error(t_stack *a, t_stack *b, char *str);
+int		free_stack_error_line(t_stack *a, t_stack *b, char **argv, int mode);
 int		free_stack(t_stack *a, t_stack *b, char **argv, int mode);
-void	fill_stack(int args, char **argv, t_stack *stack);
+void	fill_stack(int args, char **argv, t_stack *stack, int mode);
 int		check_order(t_stack *a);
 /* run.c */
 void	run(t_stack *a, t_stack *b, char *str);

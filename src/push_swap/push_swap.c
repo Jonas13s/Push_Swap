@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:00:02 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/05 19:32:06 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/05 20:24:18 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	**one_line(char **argv, int *count, int *mode)
 	i = 0;
 	while (str[i] != NULL)
 		i++;
-	*count = i;
+	*count = i + 1;
 	*mode = 1;
 	return (str);
 }
@@ -82,19 +82,20 @@ int	main(int args, char **argv)
 		args--;
 		argv++;
 	}
-	if (args == 2)
+	if (args == 2  && ft_strchr(argv[1], ' ') != 0)
+	{
 		argv = one_line(argv, &args, &mode);
+	}
 	if (args == 1)
 		return (0);
 	a = initialize(args - 1, ft_strcmp(argv[0], "-v"));
 	b = initialize(args - 1, ft_strcmp(argv[0], "-v"));
-	if (check_number(argv, args))
-		return (free_stack_error(a, b, NULL));
-	fill_stack(args, argv, a);
+	if (check_number(argv, args, mode))
+		return (free_stack_error_line(a, b, argv, mode));
+	fill_stack(args, argv, a, mode);
 	if (check_order(a))
 		return (free_stack(a, b, argv, mode));
 	solve(a, b, (args - 1));
 	free_stack(a, b, argv, mode);
-	sleep(15);
 	return (0);
 }

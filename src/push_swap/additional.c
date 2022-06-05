@@ -6,17 +6,19 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 02:12:19 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/05 18:53:22 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/05 20:24:04 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	fill_stack(int args, char **argv, t_stack *stack)
+void	fill_stack(int args, char **argv, t_stack *stack, int mode)
 {
 	int	i;
 
 	i = 1;
+	if (mode == 1)
+		i = 0;
 	args = args - 2;
 	stack->top = args;
 	while (args != -1)
