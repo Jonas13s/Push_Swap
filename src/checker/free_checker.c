@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
+/*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 01:33:07 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/17 02:08:34 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/05 19:32:14 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,18 @@ int	free_stack_error(t_stack *a, t_stack *b, char *str)
 		ft_strdel(&str);
 	ft_putstr_fd("Error\n", 2);
 	return (1);
+}
+
+char	**one_line(char **argv, int *count, int *mode)
+{
+	int		i;
+	char	**str;
+
+	str = ft_strsplit(argv[1], ' ');
+	i = 0;
+	while (str[i] != NULL)
+		i++;
+	*count = i;
+	*mode = 1;
+	return (str);
 }

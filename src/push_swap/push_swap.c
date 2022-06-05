@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
+/*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:00:02 by joivanau          #+#    #+#             */
-/*   Updated: 2022/05/23 15:28:31 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/05 19:32:06 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,26 +56,45 @@ int	debugging(t_stack *a, t_stack *b, char *str)
 	return (1);
 }
 
+char	**one_line(char **argv, int *count, int *mode)
+{
+	int		i;
+	char	**str;
+
+	str = ft_strsplit(argv[1], ' ');
+	i = 0;
+	while (str[i] != NULL)
+		i++;
+	*count = i;
+	*mode = 1;
+	return (str);
+}
+
 int	main(int args, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	int		mode;
 
-	if (args == 1)
-		return (0);
-	if (ft_strcmp(argv[1], "-v") == 0)
+	mode = 0;
+	if (args != 1 && ft_strcmp(argv[1], "-v") == 0)
 	{
 		args--;
 		argv++;
 	}
+	if (args == 2)
+		argv = one_line(argv, &args, &mode);
+	if (args == 1)
+		return (0);
 	a = initialize(args - 1, ft_strcmp(argv[0], "-v"));
 	b = initialize(args - 1, ft_strcmp(argv[0], "-v"));
 	if (check_number(argv, args))
 		return (free_stack_error(a, b, NULL));
 	fill_stack(args, argv, a);
 	if (check_order(a))
-		return (free_stack(a, b));
+		return (free_stack(a, b, argv, mode));
 	solve(a, b, (args - 1));
-	free_stack(a, b);
+	free_stack(a, b, argv, mode);
+	sleep(15);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
+/*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 01:23:41 by joivanau          #+#    #+#             */
-/*   Updated: 2022/05/23 15:28:27 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/05 19:31:33 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,14 @@ int	main(int args, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	int		mode;
 
+	mode = 0;
+	if (args == 2)
+	{
+		argv = one_line(argv, &args, &mode);
+		mode = 1;
+	}
 	if (args == 1)
 		return (0);
 	a = initialize(args - 1, 1);

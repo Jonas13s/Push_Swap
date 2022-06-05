@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   additional.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
+/*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 02:12:19 by joivanau          #+#    #+#             */
-/*   Updated: 2022/05/17 13:24:53 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/05 18:53:22 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ int	free_stack_error(t_stack *a, t_stack *b, char *str)
 	return (1);
 }
 
-int	free_stack(t_stack *a, t_stack *b)
+int	free_stack(t_stack *a, t_stack *b, char **argv, int mode)
 {
+	int	i;
+
+	i = 0;
 	if (a->array)
 		ft_memdel((void *)&a->array);
 	if (a)
@@ -53,6 +56,15 @@ int	free_stack(t_stack *a, t_stack *b)
 		ft_memdel((void *)&b->array);
 	if (b)
 		ft_memdel((void *)&b);
+	if (mode == 1)
+	{
+		while (argv[i])
+		{
+			ft_memdel((void *) &argv[i]);
+			i++;
+		}
+		ft_memdel((void **) &argv);
+	}
 	return (1);
 }
 
