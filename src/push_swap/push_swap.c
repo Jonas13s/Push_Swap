@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:00:02 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/05 20:24:18 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/05 20:36:33 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,8 @@ int	main(int args, char **argv)
 		args--;
 		argv++;
 	}
-	if (args == 2  && ft_strchr(argv[1], ' ') != 0)
-	{
+	if (args == 2 && ft_strchr(argv[1], ' ') != 0)
 		argv = one_line(argv, &args, &mode);
-	}
 	if (args == 1)
 		return (0);
 	a = initialize(args - 1, ft_strcmp(argv[0], "-v"));

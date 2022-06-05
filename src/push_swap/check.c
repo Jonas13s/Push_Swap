@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 02:30:59 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/05 20:06:04 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/05 20:37:55 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ int	check_number(char **str, int args, int mode)
 
 	if (args <= 1)
 		return (1);
-	i = 1;
+	i = 0;
 	if (mode == 1)
-		i = 0;
-	while (str[i])
+		i = -1;
+	while (str[++i])
 	{
 		j = 0;
 		while (str[i][j])
@@ -75,7 +75,6 @@ int	check_number(char **str, int args, int mode)
 		}
 		if (check_size(str[i]))
 			return (1);
-		i++;
 	}
 	if (dup_check(str))
 		return (1);
