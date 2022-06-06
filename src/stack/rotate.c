@@ -3,22 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
+/*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 00:26:28 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/25 13:30:46 by joivanau         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 15:34:15 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/15 15:55:47 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/06 13:55:10 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +17,8 @@ void	rotate(t_stack *s)
 	unsigned int	i;
 	int				temp;
 
+	if (s->top <= 0)
+		return ;
 	temp = s->array[s->top];
 	i = s->top + 1;
 	while (--i)
@@ -47,6 +37,8 @@ void	reverse_rotate(t_stack *s)
 	int	i;
 	int	temp;
 
+	if (s->top <= 0)
+		return ;
 	temp = s->array[0];
 	i = -1;
 	while (++i < s->top)

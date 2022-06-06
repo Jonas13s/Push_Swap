@@ -14,7 +14,7 @@ PUSH_SWAP = push_swap
 
 PUSH_SWAP_SRC = push_swap.c additional.c run.c groups.c
 PUSH_SWAP_SRC += sort_large.c moves.c sort_small.c
-PUSH_SWAP_SRC += check.c
+PUSH_SWAP_SRC += check.c debug.c
 
 PUSH_SWAP_DIR = src/push_swap/
 

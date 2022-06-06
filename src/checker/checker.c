@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 01:23:41 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/05 19:31:33 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/06 12:29:57 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	check_size(char *str)
 	return (1);
 }
 
-static int	check_number(char **str, int args)
+static int	check_number(char **str, int args, int mode)
 {
 	int		i;
 	int		j;
@@ -60,12 +60,14 @@ static int	check_number(char **str, int args)
 	if (args <= 1)
 		return (1);
 	i = 0;
+	if (mode == 1)
+		i = -1;
 	while (str[++i])
 	{
 		j = 0;
 		while (str[i][j])
 		{
-			if (str[i][j] == '-' && j == 0)
+			if (str[i][j] == '-' && j == 0 && str[i][j + 1] != '\0')
 				j++;
 			if (!ft_isdigit(str[i][j]))
 				return (1);
@@ -79,11 +81,13 @@ static int	check_number(char **str, int args)
 	return (0);
 }
 
-static void	fill_stack(int args, char **argv, t_stack *stack)
+static void	fill_stack(int args, char **argv, t_stack *stack, int mode)
 {
 	int	i;
 
 	i = 1;
+	if (mode == 1)
+		i = 0;
 	args = args - 2;
 	stack->top = args;
 	while (args != -1)
@@ -110,9 +114,9 @@ int	main(int args, char **argv)
 		return (0);
 	a = initialize(args - 1, 1);
 	b = initialize(args - 1, 1);
-	if (check_number(argv, args))
+	if (check_number(argv, args, mode))
 		return (free_stack_error(a, b, NULL));
-	fill_stack(args, argv, a);
+	fill_stack(args, argv, a, mode);
 	if (read_line(a, b))
 		return (1);
 	free_stack(a, NULL);

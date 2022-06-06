@@ -6,13 +6,13 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 02:12:19 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/05 20:24:04 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:51:47 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	fill_stack(int args, char **argv, t_stack *stack, int mode)
+int	fill_stack(int args, char **argv, t_stack *stack, int mode)
 {
 	int	i;
 
@@ -27,6 +27,9 @@ void	fill_stack(int args, char **argv, t_stack *stack, int mode)
 		args--;
 		i++;
 	}
+	if (check_order(stack))
+		return (1);
+	return (0);
 }
 
 int	free_stack_error(t_stack *a, t_stack *b, char *str)

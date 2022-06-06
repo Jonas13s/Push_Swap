@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:04:36 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/05 20:38:13 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:52:16 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@
 
 # define S_NUM 75
 
-/* main.c */
+/* debug.cc */
 int		debugging(t_stack *a, t_stack *b, char *str);
 /*check.c*/
 int		check_number(char **str, int args, int mode);
-int		free_stack_error(t_stack *a, t_stack *b, char *str);
 int		free_stack_error_line(t_stack *a, t_stack *b, char **argv, int mode);
-int		free_stack(t_stack *a, t_stack *b, char **argv, int mode);
-void	fill_stack(int args, char **argv, t_stack *stack, int mode);
 int		check_order(t_stack *a);
 /* run.c */
 void	run(t_stack *a, t_stack *b, char *str);
@@ -35,6 +32,9 @@ int		solve_small(t_stack *a, t_stack *b);
 /*solve_large.c*/
 int		solve_large(t_stack *a, t_stack *b);
 /*additional.c*/
+int		free_stack(t_stack *a, t_stack *b, char **argv, int mode);
+int		fill_stack(int args, char **argv, t_stack *stack, int mode);
+int		free_stack_error(t_stack *a, t_stack *b, char *str);
 int		find_smallest(t_stack *s);
 int		find_biggest(t_stack *s);
 /*groups.c*/

@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:00:02 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/05 20:36:33 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/06 12:32:08 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,42 +21,7 @@ static int	solve(t_stack *a, t_stack *b, int count)
 	return (0);
 }
 
-static void	print_debug(t_stack *a, t_stack *b)
-{
-	int	at;
-	int	bt;
-
-	at = a->top;
-	bt = b->top;
-	while (at >= 0 || bt >= 0)
-	{
-		ft_printf("║    ");
-		if (at >= 0 && bt >= 0)
-			ft_printf("%-11d  ║    %-11d  ║\n", a->array[at], b->array[bt]);
-		else if (at >= 0 && bt < 0)
-			ft_printf("%-11d  ║                 ║\n", a->array[at]);
-		else if (bt >= 0 && at < 0)
-			ft_printf("             ║    %-11d  ║\n", b->array[bt]);
-		at--;
-		bt--;
-	}
-}
-
-int	debugging(t_stack *a, t_stack *b, char *str)
-{
-	usleep(200000);
-	ft_printf("\033[2J");
-	ft_printf("╔═══════════════════════════════════╗\n");
-	ft_printf("║         stack operation: %-4s     ║\n", str);
-	ft_printf("║═══════════════════════════════════║\n");
-	ft_printf("║    stack :      ║    stack :      ║\n");
-	ft_printf("║       A         ║       B         ║\n");
-	print_debug(a, b);
-	ft_printf("╚═══════════════════════════════════╝\n");
-	return (1);
-}
-
-char	**one_line(char **argv, int *count, int *mode)
+static char	**one_line(char **argv, int *count, int *mode)
 {
 	int		i;
 	char	**str;
@@ -74,26 +39,27 @@ int	main(int args, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	int		mode;
+	int		mode[2];
 
-	mode = 0;
+	mode[1] = 0;
+	mode[0] = 1;
 	if (args != 1 && ft_strcmp(argv[1], "-v") == 0)
 	{
+		mode[0] = 0;
 		args--;
 		argv++;
 	}
 	if (args == 2 && ft_strchr(argv[1], ' ') != 0)
-		argv = one_line(argv, &args, &mode);
+		argv = one_line(argv, &args, &mode[1]);
 	if (args == 1)
 		return (0);
-	a = initialize(args - 1, ft_strcmp(argv[0], "-v"));
-	b = initialize(args - 1, ft_strcmp(argv[0], "-v"));
-	if (check_number(argv, args, mode))
-		return (free_stack_error_line(a, b, argv, mode));
-	fill_stack(args, argv, a, mode);
-	if (check_order(a))
-		return (free_stack(a, b, argv, mode));
+	a = initialize(args - 1, mode[0]);
+	b = initialize(args - 1, mode[0]);
+	if (check_number(argv, args, mode[1]))
+		return (free_stack_error_line(a, b, argv, mode[1]));
+	if (fill_stack(args, argv, a, mode[1]) == 1)
+		return (free_stack(a, b, argv, mode[1]));
 	solve(a, b, (args - 1));
-	free_stack(a, b, argv, mode);
+	free_stack(a, b, argv, mode[1]);
 	return (0);
 }

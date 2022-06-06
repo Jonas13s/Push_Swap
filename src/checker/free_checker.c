@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 01:33:07 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/05 19:32:14 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/06 12:15:45 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**one_line(char **argv, int *count, int *mode)
 	i = 0;
 	while (str[i] != NULL)
 		i++;
-	*count = i;
+	*count = i + 1;
 	*mode = 1;
 	return (str);
 }
