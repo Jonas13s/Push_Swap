@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joivanau <joivanau@hive.fi>                +#+  +:+       +#+        */
+/*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 14:05:39 by joivanau          #+#    #+#             */
-/*   Updated: 2022/03/17 02:05:57 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/06 14:41:07 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,26 @@ static char	*get_first_line(char *sbuf, char **line, int *error)
 {
 	ssize_t		i;
 	char		*temp;
+	ssize_t		strlength;
 
 	i = 0;
+	strlength = ft_strlen(sbuf);
 	while (sbuf[i] != '\n' && sbuf[i] != '\0')
 		i++;
 	if (i > 0)
 	{
+		ft_strdel(line);
 		*line = ft_strsub(sbuf, 0, i);
 		*error = 1;
 	}
-	if (sbuf[i] == '\n')
+	if (i + 1 <= strlength)
 	{
-		temp = ft_strsub(sbuf, i + 1, ft_strlen(sbuf) - i);
+		temp = ft_strsub(sbuf, i + 1, strlength - 1);
 		ft_strdel(&sbuf);
 		sbuf = temp;
 		*error = 1;
-		if (sbuf == NULL)
-			*error = -1;
 	}
-	else
+	if (i + 1 >= strlength)
 		ft_strdel(&sbuf);
 	return (sbuf);
 }
@@ -76,6 +77,7 @@ int	get_next_line(const int fd, char **line)
 	if (line == NULL || fd < 0 || BUFF_SIZE <= 0 || fd > MAX_FD \
 	|| fd == 1 || fd == 2)
 		return (-1);
+	*line = ft_strdup("");
 	if (!sbuf[fd])
 		sbuf[fd] = ft_strdup("");
 	if (!sbuf[fd])

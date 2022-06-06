@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 01:24:37 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/06 12:20:07 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/06 14:35:01 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	read_line(t_stack *a, t_stack *b)
 
 	while (get_next_line(0, &line) > 0)
 	{
+		if (!line)
+			return (free_stack_error(a, b, NULL));
 		if (operations(line, a, b))
 		{
 			ft_strdel(&line);
