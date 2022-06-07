@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 01:23:41 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/07 16:26:55 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/07 20:43:22 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,7 @@ int	main(int args, char **argv)
 
 	mode = 0;
 	if (args == 2)
-	{
 		argv = one_line(argv, &args, &mode);
-	}
 	if (args == 1)
 		return (0);
 	a = initialize(args - 1, 1);
