@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 02:12:19 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/06 11:51:47 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/07 16:25:20 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	free_stack(t_stack *a, t_stack *b, char **argv, int mode)
 		ft_memdel((void *)&b->array);
 	if (b)
 		ft_memdel((void *)&b);
-	if (mode == 1)
+	if (mode == 1 || mode == -1)
 	{
 		while (argv[i])
 		{

@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:00:02 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/06 12:32:08 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/07 16:22:42 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,25 @@ static int	solve(t_stack *a, t_stack *b, int count)
 static char	**one_line(char **argv, int *count, int *mode)
 {
 	int		i;
+	int		k;
 	char	**str;
 
 	str = ft_strsplit(argv[1], ' ');
 	i = 0;
+	k = 0;
+	while (argv[1][i] != '\0')
+	{
+		if (argv[1][i] == ' ')
+			k++;
+		i++;
+	}
+	i = 0;
 	while (str[i] != NULL)
 		i++;
-	*count = i + 1;
 	*mode = 1;
+	if (k + 1 > i)
+		*mode = -1;
+	*count = i + 1;
 	return (str);
 }
 
@@ -55,7 +66,7 @@ int	main(int args, char **argv)
 		return (0);
 	a = initialize(args - 1, mode[0]);
 	b = initialize(args - 1, mode[0]);
-	if (check_number(argv, args, mode[1]))
+	if (check_number(argv, args, mode[1]) || mode[1] == -1)
 		return (free_stack_error_line(a, b, argv, mode[1]));
 	if (fill_stack(args, argv, a, mode[1]) == 1)
 		return (free_stack(a, b, argv, mode[1]));
