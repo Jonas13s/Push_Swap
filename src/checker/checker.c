@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 01:23:41 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/08 10:57:11 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/08 11:32:11 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,13 @@ int	main(int args, char **argv)
 	if (args == 2)
 		argv = one_line(argv, &args, &mode);
 	if (args == 1)
-		return (free_argv(argv, mode));
+		return (free_argv(argv, mode, 0));
 	if (check_number(argv, args, mode) || mode == -1)
-		return (free_stack_error_line(NULL, NULL, argv, mode));
+		return (free_argv(argv, mode, 1));
 	a = initialize(args - 1, 1);
 	b = initialize(args - 1, 1);
 	fill_stack(args, argv, a, mode);
-	free_argv(argv, mode);
+	free_argv(argv, mode, 0);
 	if (read_line(a, b))
 		return (1);
 	free_stack(a, NULL);

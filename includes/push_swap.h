@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 01:04:36 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/06 11:52:16 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/08 11:35:13 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 /* debug.cc */
 int		debugging(t_stack *a, t_stack *b, char *str);
+int		free_argv(char **argv, int mode, int error);
 /*check.c*/
 int		check_number(char **str, int args, int mode);
 int		free_stack_error_line(t_stack *a, t_stack *b, char **argv, int mode);

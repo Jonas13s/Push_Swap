@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 01:24:37 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/08 10:59:22 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/08 11:37:00 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	read_line(t_stack *a, t_stack *b)
 	return (0);
 }
 
-int	free_argv(char **argv, int mode)
+int	free_argv(char **argv, int mode, int error)
 {
 	int	i;
 
@@ -94,5 +94,7 @@ int	free_argv(char **argv, int mode)
 		}
 		ft_memdel((void **) &argv);
 	}
-	return (0);
+	if (error == 1)
+		ft_putstr_fd("Error\n", 2);
+	return (1);
 }

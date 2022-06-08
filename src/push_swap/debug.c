@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 11:44:19 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/06 11:44:49 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/08 11:35:08 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,24 @@ int	debugging(t_stack *a, t_stack *b, char *str)
 	ft_printf("║       A         ║       B         ║\n");
 	print_debug(a, b);
 	ft_printf("╚═══════════════════════════════════╝\n");
+	return (1);
+}
+
+int	free_argv(char **argv, int mode, int error)
+{
+	int	i;
+
+	i = 0;
+	if (mode == 1 || mode == -1)
+	{
+		while (argv[i])
+		{
+			ft_memdel((void *) &argv[i]);
+			i++;
+		}
+		ft_memdel((void **) &argv);
+	}
+	if (error == 1)
+		ft_putstr_fd("Error\n", 2);
 	return (1);
 }

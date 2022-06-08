@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 01:33:07 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/08 10:44:27 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/07 16:28:46 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ int	free_stack_error_line(t_stack *a, t_stack *b, char **argv, int mode)
 		ft_memdel((void *)&b);
 	if (mode == 1 || mode == -1)
 	{
-		free(argv[i]);
-		free(argv);
-		i++;
 		while (argv[i])
 		{
 			ft_memdel((void *) &argv[i]);
@@ -63,7 +60,6 @@ int	free_stack_error_line(t_stack *a, t_stack *b, char **argv, int mode)
 		}
 		ft_memdel((void **) &argv);
 	}
-	ft_putstr_fd("Error\n", 2);
 	return (1);
 }
 

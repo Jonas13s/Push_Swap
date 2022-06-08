@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 00:21:19 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/08 10:52:10 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/08 11:30:50 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 int		read_line(t_stack *a, t_stack *b);
 void	free_stack(t_stack *s, char *str);
+int		free_argv(char **argv, int mode, int error);
 int		free_stack_error(t_stack *a, t_stack *b, char *str);
 char	**one_line(char **argv, int *count, int *mode);
-int		free_argv(char **argv, int mode);
 int		free_stack_error_line(t_stack *a, t_stack *b, char **argv, int mode);
 #endif
