@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 02:30:59 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/07 15:57:29 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/21 19:03:05 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ static int	check_size(char *str)
 			continue ;
 		size += str[i];
 	}
-	if (str[0] == '-' && size <= 527)
+	if (str[0] == '-' && ft_strcmp("2147483648", str) > 0)
 		return (0);
-	if (size <= 526)
+	else if (ft_strcmp("2147483648", str) > 0)
 		return (0);
 	return (1);
 }

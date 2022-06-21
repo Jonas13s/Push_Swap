@@ -6,7 +6,7 @@
 /*   By: joivanau <joivanau@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 11:44:19 by joivanau          #+#    #+#             */
-/*   Updated: 2022/06/08 11:35:08 by joivanau         ###   ########.fr       */
+/*   Updated: 2022/06/08 11:52:07 by joivanau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ int	free_argv(char **argv, int mode, int error)
 	{
 		while (argv[i])
 		{
-			ft_memdel((void *) &argv[i]);
+			free(argv[i]);
 			i++;
 		}
-		ft_memdel((void **) &argv);
+		free(argv);
 	}
 	if (error == 1)
 		ft_putstr_fd("Error\n", 2);
